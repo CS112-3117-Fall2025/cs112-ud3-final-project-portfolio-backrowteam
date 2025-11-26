@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane dividerPositions="0.3, 0.7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs112.ud3.FinalController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <StackPane prefHeight="398.0" prefWidth="175.0">
+               <children>
+                  <ImageView fx:id="backgroundImage" fitHeight="407.0" fitWidth="174.0" pickOnBounds="true">
+                     <image>
+                        <Image url="/computerImage.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="452.0" prefWidth="216.0">
+                     <children>
+                        <Text fx:id="PointInfo" stroke="WHITE" strokeType="OUTSIDE" text="&#10;points&#10;points per second&#10;" textAlignment="CENTER" wrappingWidth="153.501953125">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="ClickerButton" mnemonicParsing="false" onAction="#GetPoint" prefHeight="106.0" prefWidth="100.0">
+                           <VBox.margin>
+                              <Insets left="20.0" top="60.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fx:id="computerImage" fitHeight="110.0" fitWidth="121.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="/computerImage.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </StackPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="241.0">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="398.0" prefWidth="234.0">
+               <content>
+                  <VBox prefHeight="652.0" prefWidth="179.0">
+                     <children>
+                        <ImageView fx:id="B1Image" fitHeight="150.0" fitWidth="220.0" pickOnBounds="true">
+                           <image>
+                              <Image url="/gray.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="B2Image" fitHeight="150.0" fitWidth="220.0" pickOnBounds="true">
+                           <image>
+                              <Image url="/black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="B3Image" fitHeight="150.0" fitWidth="220.0" pickOnBounds="true">
+                           <image>
+                              <Image url="/gray.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="B4Image" fitHeight="150.0" fitWidth="220.0" pickOnBounds="true">
+                           <image>
+                              <Image url="/black.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="B5Image" fitHeight="150.0" fitWidth="220.0" pickOnBounds="true">
+                            <image>
+                                <Image url="/gray.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fx:id="B6Image" fitHeight="150.0" fitWidth="220.0" pickOnBounds="true">
+                            <image>
+                                <Image url="/black.png" />
+                            </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="370.0" prefWidth="175.0">
+               <children>
+                  <ScrollPane prefHeight="110.0" prefWidth="180.0" vbarPolicy="NEVER">
+                     <content>
+                        <HBox prefHeight="100.0" prefWidth="370.0">
+                           <children>
+                              <Button fx:id="U1" mnemonicParsing="false" prefHeight="100.0" prefWidth="70.0" text="Upgrade" />
+                              <Button fx:id="U2" mnemonicParsing="false" prefHeight="100.0" prefWidth="70.0" text="Upgrade" />
+                              <Button fx:id="U3" mnemonicParsing="false" prefHeight="100.0" prefWidth="70.0" text="Upgrade" />
+                              <Button fx:id="U4" mnemonicParsing="false" prefHeight="100.0" prefWidth="70.0" text="Upgrade" />
+                              <Button fx:id="U5" mnemonicParsing="false" prefHeight="100.0" prefWidth="70.0" text="Upgrade" />
+                              <Button fx:id="U6" mnemonicParsing="false" prefHeight="100.0" prefWidth="70.0" text="Upgrade" />
+                           </children>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="285.0" prefWidth="150.0" vbarPolicy="ALWAYS">
+                     <content>
+                        <VBox prefHeight="403.0" prefWidth="160.0">
+                           <children>
+                              <Button fx:id="B1" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                              <Button fx:id="B2" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                              <Button fx:id="B3" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                              <Button fx:id="B4" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                              <Button fx:id="B5" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                              <Button fx:id="B6" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
