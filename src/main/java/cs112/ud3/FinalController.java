@@ -24,10 +24,10 @@ public class FinalController {
     double secondSinceClick = clickCooldown;
 
     @FXML
-    private ImageView B1Image, B2Image, B3Image, B4Image, B5Image, B6Image, computerImage, backgroundImage;
+    private ImageView B1Image, B2Image, B3Image, B4Image, computerImage, backgroundImage;
 
     @FXML
-    private Button up1, up2, up3, up4;
+    private Button up1, up2, up3, up4, bu1, bu2, bu3, bu4;
 
     @FXML
     private Text PointInfo;
@@ -36,6 +36,8 @@ public class FinalController {
     Upgrade u2 = new Upgrade(20, 1, "Smart Clickers", "Auto click worth +1"); //increment CPS worth by 1
     Upgrade u3 = new Upgrade(100, 2, "Upgraded Comp.", "Your click worth +2"); //increment Manual click worth by 2
     Upgrade u4 = new Upgrade(500, -.05, "- Cooldown", "cooldown -0.05s"); //decrease Manual click cooldown by .05
+
+    Building b1 = new Building(2, 5, "Factory", "CPS +5", new Image("Factory.png")); //+5 CPS
 
     @FXML
     protected void GetPoint() {
@@ -110,7 +112,19 @@ public class FinalController {
 
     @FXML
     protected void B1() {
-        //Building 1
+        try {
+            double oldcost = b1.getCost();
+            double result = b1.purchase(money, 2); //cost *12 more
+            if (result > -1) { //CPS upgrade
+                CPS += result;
+                money -= oldcost;
+                b1.getRef().setImage(b1.getImage());
+            }
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + b1.getName());
+        }
+        catch (InsufficientMoneyException e) {
+            System.out.println(e.getMessage());
+        }
     }
     @FXML
     protected void B2() {
@@ -124,26 +138,22 @@ public class FinalController {
     protected void B4() {
         //...
     }
-    @FXML
-    protected void B5() {
-        //...
-    }
-    @FXML
-    protected void B6() {
-        //...
-    }
 
     public void oneTimeCall() {
         u1.setButton(up1);
         u2.setButton(up2);
         u3.setButton(up3);
         u4.setButton(up4);
+
+        b1.setButton(bu1);
+        b1.setRef(B1Image);
     }
 
     protected void updateText() {
         PointInfo.setText("\n" + Math.round(money*10000)/10000.0 + " > points\n" + Math.round(CPS*numPerAutoClick*10000)/10000.0 + " > points per second\n");
 
         for (Upgrade u : Upgrade.upgrades) if (u != null) u.getButton().setText(u.getName() + "\n#"+u.getCount()+"\n"+u.getDescription()+"\n($"+u.getCost()+")");
+        for (Building u : Building.buildings) if (u != null) u.getButton().setText(u.getName() + "\n#"+u.getCount()+"\n"+u.getDescription()+"\n($"+u.getCost()+")");
 
     }
 
