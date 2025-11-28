@@ -1,6 +1,8 @@
 module cs112.ud3 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
+    requires javafx.base;
 
 
     opens cs112.ud3 to javafx.fxml;
