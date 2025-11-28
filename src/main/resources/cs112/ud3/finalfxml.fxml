@@ -132,7 +132,7 @@
          <children>
             <VBox prefHeight="370.0" prefWidth="175.0">
                <children>
-                  <ScrollPane prefHeight="110.0" prefWidth="420.0" vbarPolicy="NEVER">
+                  <ScrollPane prefHeight="100.0" prefWidth="420.0" vbarPolicy="NEVER" fitToHeight="true">
                      <content>
                         <HBox prefHeight="100.0" prefWidth="720.0">
                            <children>
@@ -140,22 +140,22 @@
                               <Button fx:id="up2" onAction="#U2" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="U2" textAlignment="CENTER"/>
                               <Button fx:id="up3" onAction="#U3" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="U3" textAlignment="CENTER"/>
                               <Button fx:id="up4" onAction="#U4" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="U4" textAlignment="CENTER"/>
-                              <Button fx:id="up5" onAction="#U5" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="U5" textAlignment="CENTER"/>
-                              <Button fx:id="up6" onAction="#U6" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="U6" textAlignment="CENTER"/>
-                           </children>
-                        </HBox>
-                     </content>
-                  </ScrollPane>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="285.0" prefWidth="150.0" vbarPolicy="ALWAYS">
-                     <content>
-                        <VBox prefHeight="403.0" prefWidth="160.0">
-                           <children>
-                              <Button onAction="#B1" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
-                              <Button onAction="#B2" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
-                              <Button onAction="#B3" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
-                              <Button onAction="#B4" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
-                              <Button onAction="#B5" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
-                              <Button onAction="#B6" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                               <!--<Button fx:id="up5" onAction="#U5" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="U5" textAlignment="CENTER"/>
+                               <Button fx:id="up6" onAction="#U6" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="U6" textAlignment="CENTER"/>-->
+                            </children>
+                         </HBox>
+                      </content>
+                   </ScrollPane>
+                   <ScrollPane hbarPolicy="NEVER" prefHeight="285.0" prefWidth="150.0" vbarPolicy="ALWAYS">
+                      <content>
+                         <VBox prefHeight="403.0" prefWidth="160.0">
+                            <children>
+                               <Button onAction="#B1" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                               <Button onAction="#B2" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                               <Button onAction="#B3" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                               <Button onAction="#B4" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                               <!--<Button onAction="#B5" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />
+                               <Button onAction="#B6" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" text="Building" />-->
                            </children>
                         </VBox>
                      </content>

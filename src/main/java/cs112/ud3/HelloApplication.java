@@ -27,6 +27,7 @@ public class HelloApplication extends Application {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
 
+        myController.oneTimeCall();
         myController.updateText();
     }
 
