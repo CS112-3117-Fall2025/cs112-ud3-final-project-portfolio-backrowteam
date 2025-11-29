@@ -15,12 +15,12 @@ import javafx.util.Duration;
 public class FinalController {
     InnerController inner = new InnerController();
 
-    double CPS = 0;
-    double money = 0;
-    double clickCooldown = 2; //second
-    double numPerUserClick = 1;
-    double numPerAutoClick = 1;
-    double secondSinceClick = clickCooldown;
+    private double CPS = 0;
+    private double money = 0;
+    private double clickCooldown = 10; //second
+    private double numPerUserClick = 1;
+    private double numPerAutoClick = 1;
+    private double secondSinceClick = clickCooldown;
 
     @FXML
     private ImageView B1Image, B2Image, B3Image, B4Image, computerImage, backgroundImage;
@@ -106,7 +106,7 @@ public class FinalController {
     protected void B1() {
         try {
             double oldcost = inner.b1.getCost();
-            double result = inner.b1.purchase(money, 2); //cost *12 more
+            double result = inner.b1.purchase(money, 5); //cost *20 more
             if (result > -1) { //CPS upgrade
                 CPS += result;
                 money -= oldcost;
@@ -120,25 +120,63 @@ public class FinalController {
     }
     @FXML
     protected void B2() {
-        //Building 2
+        try {
+            double oldcost = inner.b2.getCost();
+            double result = inner.b2.purchase(money, 10); //cost *50 more
+            if (result > -1) { //CPS upgrade
+                numPerAutoClick += result;
+                money -= oldcost;
+                inner.b2.openImage();
+            }
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.b2.getName());
+        }
+        catch (InsufficientMoneyException e) {
+            System.out.println(e.getMessage());
+        }
     }
     @FXML
     protected void B3() {
-        //...
+        try {
+            double oldcost = inner.b3.getCost();
+            double result = inner.b3.purchase(money, 50); //cost *200 more
+            if (result > -1) { //CPS upgrade
+                numPerUserClick += result;
+                money -= oldcost;
+                inner.b3.openImage();
+            }
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.b3.getName());
+        }
+        catch (InsufficientMoneyException e) {
+            System.out.println(e.getMessage());
+        }
     }
     @FXML
     protected void B4() {
-        //...
+        try {
+            double oldcost = inner.b4.getCost();
+            double result = inner.b4.purchase(money, 50); //cost *200 more
+            if (result > -1) { //CPS upgrade
+                clickCooldown += result;
+                money -= oldcost;
+                inner.b4.openImage();
+            }
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.b4.getName());
+        }
+        catch (InsufficientMoneyException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private class InnerController {
         Upgrade u1 = new Upgrade(5, 0.1, "Auto Clickers", "CPS +0.1"); //increment CPS by 0.1 each time
         Upgrade u2 = new Upgrade(20, 1, "Smart Clickers", "Auto click worth +1"); //increment CPS worth by 1
-        Upgrade u3 = new Upgrade(100, 2, "Upgraded Comp.", "Your click worth +2"); //increment Manual click worth by 2
+        Upgrade u3 = new Upgrade(100, 2, "Upgraded Comp.", "Your click worth +20"); //increment Manual click worth by 20
         Upgrade u4 = new Upgrade(500, -.05, "- Cooldown", "cooldown -0.05s"); //decrease Manual click cooldown by .05
 
         Building b1 = new Building(2000, 5, "Factory", "CPS +5", new Image("Factory.png")); //+5 CPS
-
+        Building b2 = new Building(8000, 20, "Clicker School", "Auto click worth +20", new Image("School.png")); //increment CPS worth by 20
+        Building b3 = new Building(20000, 500, "Gym", "Your click worth +500", new Image("Gym.png")); //increment Manual click worth by 500
+        Building b4 = new Building(100000, -.5, "Time Adjuster", "decrease click cooldown by .5s", new Image("Reactor.png")); //decrease Manual click cooldown by .5
 
         public void oneTimeCall() {
             u1.setButton(up1);
@@ -148,6 +186,13 @@ public class FinalController {
 
             b1.setButton(bu1);
             b1.setRef(B1Image);
+            b2.setButton(bu2);
+            b2.setRef(B2Image);
+            b3.setButton(bu3);
+            b3.setRef(B3Image);
+            b4.setButton(bu4);
+            b4.setRef(B4Image);
+
             updateText();
         }
 
