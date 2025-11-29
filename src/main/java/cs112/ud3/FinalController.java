@@ -13,9 +13,8 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 public class FinalController {
+    InnerController inner = new InnerController();
 
-
-    Image blackBackground = new Image("black.png");
     double CPS = 0;
     double money = 0;
     double clickCooldown = 2; //second
@@ -32,13 +31,6 @@ public class FinalController {
     @FXML
     private Text PointInfo;
 
-    Upgrade u1 = new Upgrade(5, 0.1, "Auto Clickers", "CPS +0.1"); //increment CPS by 0.1 each time
-    Upgrade u2 = new Upgrade(20, 1, "Smart Clickers", "Auto click worth +1"); //increment CPS worth by 1
-    Upgrade u3 = new Upgrade(100, 2, "Upgraded Comp.", "Your click worth +2"); //increment Manual click worth by 2
-    Upgrade u4 = new Upgrade(500, -.05, "- Cooldown", "cooldown -0.05s"); //decrease Manual click cooldown by .05
-
-    Building b1 = new Building(2, 5, "Factory", "CPS +5", new Image("Factory.png")); //+5 CPS
-
     @FXML
     protected void GetPoint() {
         //increment points
@@ -52,13 +44,13 @@ public class FinalController {
     @FXML
     protected void U1() {
         try {
-            double oldcost = u1.getCost();
-            double result = u1.purchase(money, 1.2);
+            double oldcost = inner.u1.getCost();
+            double result = inner.u1.purchase(money, 1.2);
             if (result > -1) { //CPS upgrade
                 CPS += result;
                 money -= oldcost;
             }
-            else throw new InsufficientMoneyException("Insufficient funds to buy " + u1.getName());
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.u1.getName());
         }
         catch (InsufficientMoneyException e) {
             System.out.println(e.getMessage());
@@ -67,13 +59,13 @@ public class FinalController {
     @FXML
     protected void U2() {
         try {
-            double oldcost = u2.getCost();
-            double result = u2.purchase(money, 3); //cost *3 more
+            double oldcost = inner.u2.getCost();
+            double result = inner.u2.purchase(money, 3); //cost *3 more
             if (result > -1) { //CPS upgrade
                 numPerAutoClick += result;
                 money -= oldcost;
             }
-            else throw new InsufficientMoneyException("Insufficient funds to buy " + u2.getName());
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.u2.getName());
         }
         catch (InsufficientMoneyException e) {
             System.out.println(e.getMessage());
@@ -82,13 +74,13 @@ public class FinalController {
     @FXML
     protected void U3() {
         try {
-            double oldcost = u3.getCost();
-            double result = u3.purchase(money, 5); //cost *5 more
+            double oldcost = inner.u3.getCost();
+            double result = inner.u3.purchase(money, 5); //cost *5 more
             if (result > -1) { //CPS upgrade
                 numPerAutoClick += result;
                 money -= oldcost;
             }
-            else throw new InsufficientMoneyException("Insufficient funds to buy " + u3.getName());
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.u3.getName());
         }
         catch (InsufficientMoneyException e) {
             System.out.println(e.getMessage());
@@ -97,13 +89,13 @@ public class FinalController {
     @FXML
     protected void U4() {
         try {
-            double oldcost = u4.getCost();
-            double result = u4.purchase(money, 12); //cost *12 more
+            double oldcost = inner.u4.getCost();
+            double result = inner.u4.purchase(money, 12); //cost *12 more
             if (result > -1) { //CPS upgrade
                 clickCooldown += result;
                 money -= oldcost;
             }
-            else throw new InsufficientMoneyException("Insufficient funds to buy " + u4.getName());
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.u4.getName());
         }
         catch (InsufficientMoneyException e) {
             System.out.println(e.getMessage());
@@ -113,14 +105,14 @@ public class FinalController {
     @FXML
     protected void B1() {
         try {
-            double oldcost = b1.getCost();
-            double result = b1.purchase(money, 2); //cost *12 more
+            double oldcost = inner.b1.getCost();
+            double result = inner.b1.purchase(money, 2); //cost *12 more
             if (result > -1) { //CPS upgrade
                 CPS += result;
                 money -= oldcost;
-                b1.getRef().setImage(b1.getImage());
+                inner.b1.openImage();
             }
-            else throw new InsufficientMoneyException("Insufficient funds to buy " + b1.getName());
+            else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.b1.getName());
         }
         catch (InsufficientMoneyException e) {
             System.out.println(e.getMessage());
@@ -139,28 +131,46 @@ public class FinalController {
         //...
     }
 
-    public void oneTimeCall() {
-        u1.setButton(up1);
-        u2.setButton(up2);
-        u3.setButton(up3);
-        u4.setButton(up4);
+    private class InnerController {
+        Upgrade u1 = new Upgrade(5, 0.1, "Auto Clickers", "CPS +0.1"); //increment CPS by 0.1 each time
+        Upgrade u2 = new Upgrade(20, 1, "Smart Clickers", "Auto click worth +1"); //increment CPS worth by 1
+        Upgrade u3 = new Upgrade(100, 2, "Upgraded Comp.", "Your click worth +2"); //increment Manual click worth by 2
+        Upgrade u4 = new Upgrade(500, -.05, "- Cooldown", "cooldown -0.05s"); //decrease Manual click cooldown by .05
 
-        b1.setButton(bu1);
-        b1.setRef(B1Image);
+        Building b1 = new Building(2000, 5, "Factory", "CPS +5", new Image("Factory.png")); //+5 CPS
+
+
+        public void oneTimeCall() {
+            u1.setButton(up1);
+            u2.setButton(up2);
+            u3.setButton(up3);
+            u4.setButton(up4);
+
+            b1.setButton(bu1);
+            b1.setRef(B1Image);
+            updateText();
+        }
+
+        public void updateText() {
+            PointInfo.setText("\n" + Math.round(money*10000)/10000.0 + " > points\n" + Math.round(CPS*numPerAutoClick*10000)/10000.0 + " > points per second\n");
+
+            for (Upgrade u : Upgrade.upgrades) if (u != null) u.getButton().setText(u.getName() + "\n#"+u.getCount()+"\n"+u.getDescription()+"\n($"+u.getCost()+")");
+            for (Building u : Building.buildings) if (u != null) u.getButton().setText(u.getName() + "\n#"+u.getCount()+"\n"+u.getDescription()+"\n($"+u.getCost()+")");
+
+        }
+
+        public void everySecond() {
+            this.updateText();
+            secondSinceClick+=1;
+            money += numPerAutoClick*CPS;
+        }
     }
-
-    protected void updateText() {
-        PointInfo.setText("\n" + Math.round(money*10000)/10000.0 + " > points\n" + Math.round(CPS*numPerAutoClick*10000)/10000.0 + " > points per second\n");
-
-        for (Upgrade u : Upgrade.upgrades) if (u != null) u.getButton().setText(u.getName() + "\n#"+u.getCount()+"\n"+u.getDescription()+"\n($"+u.getCost()+")");
-        for (Building u : Building.buildings) if (u != null) u.getButton().setText(u.getName() + "\n#"+u.getCount()+"\n"+u.getDescription()+"\n($"+u.getCost()+")");
-
-    }
-
 
     public void everySecond() {
-        this.updateText();
-        secondSinceClick+=1;
-        money += numPerAutoClick*CPS;
+        inner.everySecond();
     }
+    public void oneTimeCall() {
+        inner.oneTimeCall();
+    }
+
 }

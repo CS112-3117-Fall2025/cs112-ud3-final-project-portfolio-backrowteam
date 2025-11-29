@@ -67,5 +67,8 @@ public class Building implements Purchasable {
     public Image getImage() {
         return buyImage;
     }
+    public void openImage() {
+        this.getRef().setImage(this.getImage());
+    }
 
 }

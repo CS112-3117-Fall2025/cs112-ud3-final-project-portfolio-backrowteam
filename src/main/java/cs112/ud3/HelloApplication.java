@@ -28,7 +28,6 @@ public class HelloApplication extends Application {
         timeline.playFromStart();
 
         myController.oneTimeCall();
-        myController.updateText();
     }
 
     public static void main(String[] args) {
