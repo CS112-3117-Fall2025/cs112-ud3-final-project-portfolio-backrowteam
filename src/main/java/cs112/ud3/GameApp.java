@@ -11,10 +11,10 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class GameApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("finalfxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GameApp.class.getResource("finalfxml.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setResizable(false);
         stage.setTitle("Clicker");
