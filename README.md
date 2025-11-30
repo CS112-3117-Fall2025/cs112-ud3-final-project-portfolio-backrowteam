@@ -18,4 +18,4 @@ Cookie clicker: [link](https://orteil.dashnet.org/cookieclicker/)
 
 ## Wireframe
 
-Place your wireframe image(s) here! Make sure they're updated to be accurate to your final project!
+![til](./src/main/resources/GUIDiagram.png)
