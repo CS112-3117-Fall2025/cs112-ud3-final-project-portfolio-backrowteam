@@ -1,7 +1,12 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=21833939)
 # Unit Deliverable 3 - Final Project
 
-Scott Pickslay, Eduardo Martin, Alexander Anderson
+# backrowteam presents, Computer clicker! By Scott Pickslay, Eduardo Martin, Alexander Anderson
+
+## Description
+
+Our project was inspired by hit web game, cookie clicker. With the same general format we took heavy inspiration from the game but with our own computer science spin. You can click the computer to take out your frustration after your code stops working, earn points to click the computer faster, and buy even more upgrades to satisfy your computer clicking desires.
+
+Cookie clicker: [link](https://orteil.dashnet.org/cookieclicker/)
 
 ## Demo
 
