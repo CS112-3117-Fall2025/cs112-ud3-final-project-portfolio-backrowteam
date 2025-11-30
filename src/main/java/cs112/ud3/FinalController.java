@@ -77,7 +77,7 @@ public class FinalController {
             double oldcost = inner.u3.getCost();
             double result = inner.u3.purchase(money, 5); //cost *5 more
             if (result > -1) { //CPS upgrade
-                numPerAutoClick += result;
+                numPerUserClick += result;
                 money -= oldcost;
             }
             else throw new InsufficientMoneyException("Insufficient funds to buy " + inner.u3.getName());
