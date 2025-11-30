@@ -52,11 +52,11 @@
          <children>
             <StackPane prefHeight="398.0" prefWidth="175.0">
                <children>
-                  <ImageView fx:id="backgroundImage" fitHeight="407.0" fitWidth="174.0" pickOnBounds="true">
+                  <!--<ImageView fx:id="backgroundImage" fitHeight="407.0" fitWidth="174.0" pickOnBounds="true">
                      <image>
                         <Image url="/computerImage.png" />
                      </image>
-                  </ImageView>
+                  </ImageView>-->
                   <VBox prefHeight="452.0" prefWidth="216.0">
                      <children>
                         <Text fx:id="PointInfo" stroke="WHITE" strokeType="OUTSIDE" text="&#10;points&#10;points per second&#10;" textAlignment="CENTER" wrappingWidth="153.501953125">
